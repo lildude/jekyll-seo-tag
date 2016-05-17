@@ -242,6 +242,10 @@
     "sameAs": {{ seo_links | jsonify }},
 {% endif %}
 
+{% if seo_author.name %}
+    "author": { "@type": "Person", "name": {{ seo_author.name | jsonify }} },
+{% endif %}
+
     "url": {{ page.url | prepend: seo_url | replace:'/index.html','/' | jsonify }}
   }
 </script>
