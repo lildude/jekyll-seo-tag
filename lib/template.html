@@ -213,7 +213,7 @@
     "description": {{ seo_description | jsonify }},
 {% endif %}
 
-{% if seo_site_logo %}
+{% if seo_site_logo and seo_type != "BlogPosting" %}
     "logo": {{ seo_site_logo | jsonify }},
 {% endif %}
 
