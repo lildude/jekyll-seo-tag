@@ -98,11 +98,25 @@
 
 {% if page.image %}
   {% assign seo_page_image = page.image.path | default: page.image.facebook | default: page.image %}
+{% endif %}
+
+{% unless seo_page_image and site.first_img == 'false' %}
+{% assign images = page.content | markdownify | split:'<img ' %}
+  {% for image in images %}
+    {% if image contains 'src=' %}
+      {% assign seo_page_image = image | split:' ' | first | split: '"' | last %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endunless %}
+
+{% if seo_page_image %}
   {% unless seo_page_image contains "://" %}
     {% assign seo_page_image = seo_page_image | prepend: seo_url %}
   {% endunless %}
   {% assign seo_page_image = seo_page_image | escape %}
 {% endif %}
+
 
 {% if seo_tag.title and seo_title %}
   <title>{{ seo_title }}</title>
