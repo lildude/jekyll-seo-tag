@@ -10,19 +10,19 @@
 {% assign seo_url = seo_url | default: site.github.url %}
 {% assign seo_site_title = site.title | default: site.name %}
 
-{% if page.title %}
+{% if page.title and page.title != "Home" %}
   {% assign seo_title = page.title %}
   {% assign seo_page_title = page.title %}
 
   {% if seo_site_title %}
-    {% assign seo_title = seo_title | append:" - " | append: seo_site_title %}
+    {% assign seo_title = seo_title | append: site.separator | append: seo_site_title %}
   {% endif %}
 {% elsif seo_site_title %}
   {% assign seo_title = seo_site_title %}
   {% assign seo_page_title = seo_site_title %}
 
-  {% if site.description %}
-    {% assign seo_title = seo_title | append:" - " | append: site.description %}
+  {% if site.tagline %}
+    {% assign seo_title = seo_title | append: site.separator | append: site.tagline %}
   {% endif %}
 {% endif %}
 
