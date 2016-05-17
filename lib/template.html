@@ -150,10 +150,6 @@
   {% endif %}
 {% endif %}
 
-{% if page.image.twitter %}
-  <meta name="twitter:image" content="{{ page.image.twitter | prepend: seo_url | escape }}" />
-{% endif %}
-
 {% if page.date %}
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
@@ -179,6 +175,15 @@
   {% if seo_author_twitter %}
     <meta name="twitter:creator" content="@{{ seo_author_twitter }}" />
   {% endif %}
+  
+  {% if page.image.twitter %}
+    <meta name="twitter:image" content="{{ page.image.twitter | prepend: seo_url | escape }}" />
+  {% elsif seo_page_image %}
+    <meta name="twitter:image" content="{{ seo_page_image }}" />
+  {% else %}
+    <meta name="twitter:image" content="{{ seo_site_logo }}" />
+  {% endif %}
+
 {% endif %}
 
 {% if site.facebook %}
