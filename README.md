@@ -11,7 +11,7 @@ Jekyll SEO Tag adds the following meta tags to your site:
 * Pages title (with site title appended when available)
 * Page description
 * Canonical URL
-* Next and previous URLs for posts
+* Next and previous URLs on paginated pages
 * [JSON-LD Site and post metadata](https://developers.google.com/structured-data/) for richer indexing
 * [Open graph](http://ogp.me/) title, description, site title, and URL (for Facebook, LinkedIn, etc.)
 * [Twitter summary card](https://dev.twitter.com/cards/overview) metadata
@@ -101,7 +101,7 @@ If for some reason, you don't want the plugin to output `<title>` tags on each p
 
 ### Author information
 
-Author information is used to propagate the `creator` field of Twitter summary cards. This is should be an author-specific, not site-wide Twitter handle (the site-wide username be stored as `site.twitter.username`).
+Author information is used to propagate the `creator` field of Twitter summary cards. This should be an author-specific, not site-wide Twitter handle (the site-wide username be stored as `site.twitter.username`).
 
 *TL;DR: In most cases, put `author: [your Twitter handle]` in the document's front matter, for sites with multiple authors. If you need something more complicated, read on.*
 
@@ -183,3 +183,7 @@ image:
   height: 100
   width: 100
 ```
+
+### SmartyPants Titles
+
+Titles will be processed using [Jekyll's `smartify` filter](https://jekyllrb.com/docs/templates/). This will use SmartyPants to translate plain ASCII punctuation into "smart" typographic punctuation. This will not render or strip any Markdown you may be using in a page title.
