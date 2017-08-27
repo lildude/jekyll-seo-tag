@@ -55,7 +55,7 @@
   {% assign seo_description = page.description | default: page.content %}
 {% endif %}
 {% if seo_description %}
-  {% assign seo_description = seo_description | markdownify | strip_html | remove: 'Google Adsense Advert Here' | truncatewords:30 | strip_newlines | escape_once %}
+  {% assign seo_description = seo_description | markdownify | strip_html | remove: 'Google Adsense Advert Here' | truncatewords:20 | strip_newlines | escape_once %}
 {% endif %}
 
 {% assign seo_author = page.author | default: page.authors[0] | default: site.author %}
