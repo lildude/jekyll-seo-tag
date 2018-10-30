@@ -1,17 +1,21 @@
+require: rubocop-jekyll
 inherit_gem:
-  jekyll: .rubocop.yml
+  rubocop-jekyll: .rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - vendor/**/*
 
 Metrics/LineLength:
   Exclude:
     - spec/**/*
     - jekyll-seo-tag.gemspec
 
-Style/Documentation:
-  Enabled: false
-
-Style/FileName:
-  Enabled: false
-
-AllCops:
+Metrics/BlockLength:
   Exclude:
-    - vendor/**/*
+    - spec/**/*
+
+Layout/IndentHeredoc:
+  Exclude:
+    - spec/**/*
