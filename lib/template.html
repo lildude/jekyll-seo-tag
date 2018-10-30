@@ -3,10 +3,6 @@
   <title>{{ seo_tag.title }}</title>
 {% endif %}
 
-{% if page.title and page.title != "Home" %}
-  {% assign seo_title = page.title %}
-  {% assign seo_page_title = page.title %}
-
 {% if seo_tag.page_title %}
   <meta property="og:title" content="{{ seo_tag.page_title }}" />
 {% endif %}
